@@ -1,0 +1,4 @@
+{
+    "image":"mcr.microsoft.com/devcontainers/universal:2",
+    "postCreateCommand": "python -m pip install pip-tools && cd src && pip install -r requirements.txt && set -a && source ./../config/.env && set +a"
+}
