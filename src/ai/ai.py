@@ -11,10 +11,15 @@ class AI:
     def hello(self, name):
         if (len(self.messages) == 0):
             self.request("Hi, you can call me " + name)
-    
+        
+        self.set_system(name)
+
+    def set_system(self, name):
+        prompt = "Your name is KinnCJ. You are a CTO mentoring engineers, provide extremely detailed answers and always ask guiding questions in a friendly and professional tone. Always respond the messages with the user's name, which is " + name
+        self.request(prompt = prompt, role="system")
     # API Calls to OpenAI
-    def request(self, prompt, model='gpt-3.5-turbo'):
-        message = {'role': 'user', 'content': prompt}
+    def request(self, prompt, model='gpt-3.5-turbo', role='user'):
+        message = {'role': role, 'content': prompt}
         self.write(message)
         response = openai.ChatCompletion.create(model=model, messages=self.messages)
         self.write(response['choices'][0]['message'])

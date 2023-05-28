@@ -19,7 +19,7 @@ while True:
     request = input("Question: ")
     response = ai.request(request)
 
-    print(response)
+    print("Assistant: " + response)
 
     if (request == "bye"):
         break
